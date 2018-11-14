@@ -1,0 +1,63 @@
+### .tcshrc ###
+### Miles Lauridsen 2015-08-23
+
+
+### Shell Settings ###
+set autolist
+set complete=enhance
+set autoexpand
+
+### End Shell Settings ###
+
+
+### Colors ###
+## Referenced from: https://www.cs.umd.edu/~srhuang/teaching/code_snippets/prompt_color.tcsh.html
+set     red="%{\033[1;31m%}"
+set   green="%{\033[0;32m%}"
+set  yellow="%{\033[1;33m%}"
+set    blue="%{\033[1;34m%}"
+set magenta="%{\033[1;35m%}"
+set    cyan="%{\033[1;36m%}"
+set   white="%{\033[0;37m%}"
+set     end="%{\033[0m%}" # This is needed at the end... :(
+
+set prompt="${green}%n${blue}@%m ${white}%~ ${green}%%${end} "
+
+# Clean up after ourselves...
+unset red green yellow blue magenta cyan yellow white end
+
+### End Colors ###
+
+
+### Aliases ###
+alias c "clear"
+alias ll "ls -l"
+alias lt "ls -lrt"
+alias la "ls -la"
+alias lc "c; ll"
+alias lca "c; la"
+alias soc "source ~/.tcshrc &"
+alias count "ls -l|wc -l"
+alias mv "mv -v"
+alias rsynctimes "rsync --recursive --times --verbose --ignore-existing --progress"
+alias rsynctimesdry "rsync --recursive --times --verbose --ignore-existing --dry-run"
+
+### End Aliases ###
+
+
+### History ###
+# Remember more history
+# Prereqs
+# 'touch ~/.logout && echo "history -S" >> ~/.logout'
+# 'touch ~/.tcsh_history'
+set history = 2000 # History remembered is 2000
+set savehist = (2000 merge) # Save and merge with existing saved
+set histfile = ~/.tcsh_history
+
+### End History ###
+
+
+### Env Vars ###
+#setenv SOMEVAR "somepath"
+
+### End Env Vars ###
